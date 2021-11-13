@@ -1,0 +1,573 @@
+{% extends 'base.html' %}
+{% load static %}
+    
+{% block content %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'js/custom.js'%}"></script>
+
+    <!--  ==========  -->
+    <!--  = Breadcrumbs =  -->
+    <!--  ==========  -->
+    <div class="darker-stripe">
+        <div class="container">
+        	<div class="row">
+        		<div class="span12">
+        		    <ul class="breadcrumb">
+	                    <li>
+	                        <a href="index.html">تولباکس</a>
+	                    </li>
+	                    <li><span class="icon-chevron-right"></span></li>
+	                    <li>
+	                        <a href="shop.html">فروشگاه</a>
+	                    </li>
+	                    <li><span class="icon-chevron-right"></span></li>
+	                    <li>
+	                        <a href="#">محصول ویژه</a>
+	                    </li>
+	                    <li><span class="icon-chevron-right"></span></li>
+	                    <li>
+	                        <a href="{% url 'product-detail' product.pk %}">{{product.name}}</a>
+	                    </li>
+	                </ul>
+        		</div>
+        	</div>
+        </div>
+    </div>
+
+    <!--  ==========  -->
+    <!--  = Main container =  -->
+    <!--  ==========  -->
+    <div class="container">
+        <div class="push-up top-equal blocks-spacer">
+            
+            <!--  ==========  -->
+            <!--  = Product =  -->
+            <!--  ==========  -->
+            <div class="row blocks-spacer">
+                
+                <!--  ==========  -->
+                <!--  = Preview Images =  -->
+                <!--  ==========  -->
+                <div class="span5">
+                    <div class="product-preview">
+                        {% for image in product.img.all%}
+                        {% if image.default %}
+                            <div class="picture">
+                                <img src="{{image.image.url}}" alt="" width="940" height="940" id="mainPreviewImg" />
+                            </div>
+                        {% endif %}
+                        {% endfor %}
+                        <div class="thumbs clearfix">
+                             {% for image in product.img.all%}
+
+                            <div class="thumb active">
+                                <a href="#mainPreviewImg"><img src="{{image.image.url}}" alt="" width="940" height="940" /></a>
+                            </div>
+
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!--  ==========  -->
+                <!--  = Title and short desc =  -->
+                <!--  ==========  -->
+                <div class="span7">
+                    <div class="product-title">
+                        <h1 class="name"><span class="light"> محصول ویژه</span> {{product.name}}</h1>
+                        <div class="meta">
+                            {% if new_product.price > 0.0 %}
+                            {% if new_product.previous_price > 0 %}
+                            <h5 class="tag"><span class="striked">{{product.previous_price}} تومان</span> <span class="red-clr">{{product.price}} تومان</span></h5>
+                            {% else %}
+                            <h5 class="tag"> <span>{{product.price}} تومان</span></h5>
+                            {% endif %}
+                            {% else%}
+                            <h5 class="tag"> <span>تماس بگیرید</span></h5>
+                            {% endif %}
+
+                            <span class="stock">
+                                {% if product.qty < 1 %}
+                                <span class="btn btn-danger">اتمام موجودی</span>
+                                {% else %}
+                                <span class="btn btn-success">موجود</span> 
+                                {% endif %}
+
+                            </span>
+                        </div>
+                    </div>
+                    <div class="product-description">
+                        <p>{{product.description}}</p>
+                        <hr />
+                        
+                        <!--  ==========  -->
+                        <!--  = Add to cart form =  -->
+                        <!--  ==========  -->
+                        {% if product.price > 0 %}
+
+                        {% if product.qty >= 1 %}
+                        <div  class="form form-inline clearfix">
+                            <div class="numbered">
+                            	<input type="number" id="select" value="1" class="" />
+                            	<!--span class="clickable add-one icon-plus-sign-alt"></span>
+                            	<span class="clickable remove-one icon-minus-sign-alt"></span-->
+                            </div>
+                            &nbsp;
+                            <!--select name="color" class="span2">
+                                <option value="-1">انتخاب رنگ</option>
+                                <option value="blue">آبی</option>
+                                <option value="orange">نارنجی</option>
+                                <option value="black">مشکی</option>
+                            </select-->
+                            &nbsp;
+                            <!--select name="size" class="span2">
+                                <option value="-1">انتخاب سایز</option>
+                                <option value="XS">خیلی کوچک</option>
+                                <option value="S">کوچک</option>
+                                <option value="M">متوسط</option>
+                                <option value="L">بزرگ</option>
+                                <option value="XL">خیلی بزرگ</option>
+                                <option value="XXL">خیلی خیلی بزرگ</option>
+                            </select-->
+
+                            <button class="btn btn-danger pull-right" id="add-button" value="{{product.id}}"><i class="icon-shopping-cart"></i> اضافه به سبد سفارش من</button>
+                            {% else %}
+                            <button class="btn btn-danger pull-right" id="add-button" value="{{product.id}}"><i class="icon-bell"></i> موجود شد اطلاع بده</button>
+                            {% endif %}
+
+                            &nbsp;</div>
+                            <!--select name="color" class="span2">
+                                <option value="-1">انتخاب رنگ</option>
+                                <option value="blue">آبی</option>
+                                <option value="orange">نارنجی</option>
+                                <option value="black">مشکی</option>
+                            </select-->
+                            &nbsp;
+                            <!--select name="size" class="span2">
+                                <option value="-1">انتخاب سایز</option>
+                                <option value="XS">خیلی کوچک</option>
+                                <option value="S">کوچک</option>
+                                <option value="M">متوسط</option>
+                                <option value="L">بزرگ</option>
+                                <option value="XL">خیلی بزرگ</option>
+                                <option value="XXL">خیلی خیلی بزرگ</option>
+                            </select-->
+                            {% endif %}
+
+                        <hr/>
+                        
+                        <!--  ==========  -->
+                        <!--  = Share buttons =  -->
+                        <!--  ==========  -->
+                        <div class="share-item">
+                            <div class="pull-right social-networks">
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style ">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_pinterest_pinit"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-517459541beb3977"></script>
+                                <!-- AddThis Button END -->
+                            </div>
+                            با دوستان خود به اشتراک بگذارید :
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <!--  ==========  -->
+            <!--  = Tabs with more info =  -->
+            <!--  ==========  -->
+            <div class="row">
+                <div class="span12">
+                    <ul id="myTab" class="nav nav-tabs">
+<!--                        <li class="active">-->
+<!--                            <a href="#tab-1" data-toggle="tab">توضیحات</a>-->
+<!--                        </li>-->
+                        <li class="active">
+                            <a href="#tab-2" data-toggle="tab">مشخصات فنی</a>
+                        </li>
+                        <li>
+                            <a href="#tab-3" data-toggle="tab">نظرات</a>
+                        </li>
+<!--                        <li>-->
+<!--                            <a href="#tab-4" data-toggle="tab">جزئیات ارسال</a>-->
+<!--                        </li>-->
+                    </ul>
+                    <div class="tab-content">
+<!--                        <div class="fade in tab-pane active" id="tab-1">-->
+<!--                            <h3>توضیحات محصول</h3>-->
+<!--                            <p>{{product.description}}</p>-->
+<!--                        </div>-->
+                        <div class="fade in tab-pane active" id="tab-2">
+                            <h3>مشخصات فنی</h3>
+
+                            <div class="sidebar-item opening-time" id="opening_time-4">
+                        <div class="underlined">
+                            <h3><span class="light"></span> </h3>
+                        </div>
+                                {% for attr in product.attrs.all%}
+                        <div class="time-table ">
+                            <dl class="week-day light-bg">
+                                <dt>
+                                    {{attr.cat_attr.attr_name}}
+                                </dt>
+                                <dd>
+                                    {{attr.attr}}
+                                </dd>
+                            </dl>
+
+                        </div>
+                                {% endfor %}
+                    </div>
+
+<!--                           <table class="table table-bordered">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    {% for attr in product.attrs.all%}-->
+<!--                    <th scope="col">{{attr.cat_attr.attr_name}}</th>-->
+<!--                    {% endfor %}-->
+<!--                    &lt;!&ndash;                    <th scope="col">Check</th>&ndash;&gt;-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+
+
+
+<!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>{{payment.bank_track_id}}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% if payment.status == 100 %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>موفق</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% else %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>ناموفق</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% endif %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+
+
+<!--                </tbody>-->
+<!--            </table>-->
+
+                        </div>
+                        <div class="fade tab-pane" id="tab-3">
+                              <!--  ==========  -->
+                <!--  = Comments =  -->
+                <!--  ==========  -->
+                {% if product.comment.all %}
+                <section class="comments-container" id="comments">
+                    <h3 class="push-down-25"><span class="light">{{product.comments.all.count}}</span> نظرات</h3>
+                    {% for comment in product.comment.all %}
+                    <!--  ==========  -->
+                    <!--  = Single Comment =  -->
+                    <!--  ==========  -->
+                    <div class="single-comment clearfix">
+                        <div class="avatar-container">
+                            <img alt="avatar" class="avatar" height="184"
+                                 src="{% static 'images//dummy/avatars/149071.png'%}" width="184"/>
+                        </div>
+                        <div class="comment-content">
+
+                            <div class="comment-inner">
+                                {% if comment.reply_to %}
+                                <p style="font-style: italic;">در پاسخ به
+                                    <cite class="author-name">
+                                        <span class="light" style="font-style: italic;"></span>
+                                        {{comment.reply_to.author}}
+                                    </cite>
+                                <div class="metadata">
+                                    {{comment.reply_to.created}}
+                                </div>
+                                <p style="font-style: italic;">{{comment.reply_to.body|slice:":35"}}</p>
+                                </p>
+                                <hr/>
+                                {% endif %}
+
+                                <cite class="author-name">
+                                    <span class="light"></span> {{comment.author}}
+                                </cite>
+                                <div class="metadata">
+                                    {{comment.created}} <a href="#">پاسخ</a>
+                                </div>
+                                <div class="comment-text">
+                                    <p>{{comment.body}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+                        </div>
+                        <div class="fade tab-pane" id="tab-4">
+                            <p>
+                                لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود. کتابهای زیادی شرایط سخت ، دشوار و کمی در سالهای دور لازم است. هدف از این نسخه فرهنگ پس از آن و دستاوردهای خوب شاید باشد. حروفچینی لازم در شرایط فعلی لازمه تکنولوژی بود که گذشته، حال و آینده را شامل گردد. سی و پنج درصد از طراحان در قرن پانزدهم میبایست پرینتر در ستون و سطر حروف لازم است، بلکه شناخت این ابزار گاه اساسا بدون هدف بود و سئوالهای زیادی در گذشته بوجود می آید، تنها لازمه آن بود...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--        </div>-->
+<!--    </div> &lt;!&ndash; /container &ndash;&gt;-->
+    
+    <!--  ==========  -->
+    <!--  = Related Products =  -->
+    <!--  ==========  -->
+    <div class="boxed-area no-bottom">
+        <div class="container">
+
+            <!--  ==========  -->
+            <!--  = Title =  -->
+            <!--  ==========  -->
+            <div class="row">
+                <div class="span12">
+                    <div class="main-titles lined">
+                    	<h2 class="title"><span class="light">محصولات</span> مرتبط</h2>
+                    </div>
+                </div>
+            </div>
+
+<!--            &lt;!&ndash;  ==========  &ndash;&gt;-->
+<!--            &lt;!&ndash;  = Related products =  &ndash;&gt;-->
+<!--            &lt;!&ndash;  ==========  &ndash;&gt;-->
+<!--            <div class="row popup-products">-->
+
+
+<!--                &lt;!&ndash;  ==========  &ndash;&gt;-->
+<!--                &lt;!&ndash;  = Products =  &ndash;&gt;-->
+<!--                &lt;!&ndash;  ==========  &ndash;&gt;-->
+<!--            	<div class="span3">-->
+<!--            	    <div class="product">-->
+<!--            	        <div class="product-img">-->
+<!--                            <div class="picture">-->
+<!--                                <img src="images/dummy/products/product-1.jpg" alt="" width="540" height="374" />-->
+<!--                                <div class="img-overlay">-->
+<!--                                    <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>-->
+<!--                                    <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="main-titles no-margin">-->
+<!--                            <h4 class="title"><span class="striked">90000 تومان</span> <span class="red-clr">80000 تومان</span></h4>-->
+<!--                            <h5 class="no-margin">آدیداس کانورس</h5>-->
+<!--                        </div>-->
+<!--                        <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>-->
+<!--                        <p class="center-align stars">-->
+<!--                            <span class="icon-star stars-clr"></span>-->
+<!--                            <span class="icon-star stars-clr"></span>-->
+<!--                            <span class="icon-star stars-clr"></span>-->
+<!--                            <span class="icon-star stars-clr"></span>-->
+<!--                            <span class="icon-star"></span>-->
+<!--                        </p>-->
+<!--            	    </div>-->
+<!--            	</div> &lt;!&ndash; /product &ndash;&gt;&ndash;&gt;-->
+            </div>-->
+       </div>
+    </div>
+
+
+
+                    <!--                                &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                &lt;!&ndash;  = Single Nested Comment - one level =  &ndash;&gt;-->
+                    <!--                                &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                <div class="single-comment nested clearfix">-->
+                    <!--                                    <div class="avatar-container">-->
+                    <!--                                        <img src="{% static 'images//dummy/avatars/149071.png'%}" alt="avatar" class="avatar" width="184" height="184" />-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="comment-content">-->
+                    <!--                                        <div class="comment-inner">-->
+                    <!--                                            <cite class="author-name">-->
+                    <!--                                                <span class="light">Nested</span> Comment One Level-->
+                    <!--                                            </cite>-->
+                    <!--                                            <div class="metadata">-->
+                    <!--                                                26 فروردین 1392 در 12:30 بعد از ظهر  /  <a href="#">پاسخ</a>-->
+                    <!--                                            </div>-->
+                    <!--                                            <div class="comment-text">-->
+                    <!--                                                <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد</p>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div>-->
+                    <!--                                    </div>-->
+                    <!--                                </div> &lt;!&ndash; /nested comment &ndash;&gt;-->
+                    <!--                                 -->
+                    <!--                                &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                &lt;!&ndash;  = Single Nested Comment - one level =  &ndash;&gt;-->
+                    <!--                                &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                <div class="single-comment nested clearfix">-->
+                    <!--                                    <div class="avatar-container">-->
+                    <!--                                        <img src="{% static 'images//dummy/avatars/149071.png'%}" alt="avatar" class="avatar" width="184" height="184" />-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="comment-content">-->
+                    <!--                                        <div class="comment-inner">-->
+                    <!--                                            <cite class="author-name">-->
+                    <!--                                                <span class="light">Nested</span> Comment One Level-->
+                    <!--                                            </cite>-->
+                    <!--                                            <div class="metadata">-->
+                    <!--                                                26 فروردین 1392 در 12:30 بعد از ظهر  /  <a href="#">پاسخ</a>-->
+                    <!--                                            </div>-->
+                    <!--                                            <div class="comment-text">-->
+                    <!--                                                <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد</p>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div>-->
+                    <!--                                    </div>-->
+                    <!--                                </div> &lt;!&ndash; /nested comment &ndash;&gt;-->
+                    <!--                                 -->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        -->
+                    <!--                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                        &lt;!&ndash;  = Single Comment =  &ndash;&gt;-->
+                    <!--                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                        <div class="single-comment clearfix">-->
+                    <!--                            <div class="avatar-container">-->
+                    <!--                                <img src="{% static 'images//dummy/avatars/149071.png'%}" alt="avatar" class="avatar" width="184" height="184" />-->
+                    <!--                            </div>-->
+                    <!--                            <div class="comment-content">-->
+                    <!--                                <div class="comment-inner">-->
+                    <!--                                    <cite class="author-name">-->
+                    <!--                                        <span class="light">جان</span> دیوید-->
+                    <!--                                    </cite>-->
+                    <!--                                    <div class="metadata">-->
+                    <!--                                        26 فروردین 1392 در 12:30 بعد از ظهر  /  <a href="#">پاسخ</a>-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="comment-text">-->
+                    <!--                                        <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد</p>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                                -->
+                    <!--                                -->
+                    <!--                                &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                &lt;!&ndash;  = Single Nested Comment - one level =  &ndash;&gt;-->
+                    <!--                                &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                <div class="single-comment nested clearfix">-->
+                    <!--                                    <div class="avatar-container">-->
+                    <!--                                        <img src="{% static 'images//dummy/avatars/149071.png'%}" alt="avatar" class="avatar" width="184" height="184" />-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="comment-content">-->
+                    <!--                                        <div class="comment-inner">-->
+                    <!--                                            <cite class="author-name">-->
+                    <!--                                                <span class="light">Nested</span> Comment One Level-->
+                    <!--                                            </cite>-->
+                    <!--                                            <div class="metadata">-->
+                    <!--                                                26 فروردین 1392 در 12:30 بعد از ظهر  /  <a href="#">پاسخ</a>-->
+                    <!--                                            </div>-->
+                    <!--                                            <div class="comment-text">-->
+                    <!--                                                <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد</p>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div>-->
+                    <!--                                        -->
+                    <!--                                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                        &lt;!&ndash;  = Single Nested Comment - two levels =  &ndash;&gt;-->
+                    <!--                                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                        <div class="single-comment nested clearfix">-->
+                    <!--                                            <div class="avatar-container">-->
+                    <!--                                                <img src="{% static 'images//dummy/avatars/149071.png'%}" alt="avatar" class="avatar" width="184" height="184" />-->
+                    <!--                                            </div>-->
+                    <!--                                            <div class="comment-content">-->
+                    <!--                                                <div class="comment-inner">-->
+                    <!--                                                    <cite class="author-name">-->
+                    <!--                                                        <span class="light">Nested</span> Comment Two Levels-->
+                    <!--                                                    </cite>-->
+                    <!--                                                    <div class="metadata">-->
+                    <!--                                                        26 فروردین 1392 در 12:30 بعد از ظهر  /  <a href="#">پاسخ</a>-->
+                    <!--                                                    </div>-->
+                    <!--                                                    <div class="comment-text">-->
+                    <!--                                                        <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد</p>-->
+                    <!--                                                    </div>-->
+                    <!--                                                </div>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div> &lt;!&ndash; /nested comment 2 &ndash;&gt;-->
+                    <!--                                    </div>-->
+                    <!--                                </div> &lt;!&ndash; /nested comment 1 &ndash;&gt;-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        -->
+                    <!--                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                        &lt;!&ndash;  = Single Comment =  &ndash;&gt;-->
+                    <!--                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                        <div class="single-comment clearfix">-->
+                    <!--                            <div class="avatar-container">-->
+                    <!--                                <img src="{% static 'images//dummy/avatars/149071.png'%}" alt="avatar" class="avatar" width="184" height="184" />-->
+                    <!--                            </div>-->
+                    <!--                            <div class="comment-content">-->
+                    <!--                                <div class="comment-inner">-->
+                    <!--                                    <cite class="author-name">-->
+                    <!--                                        <span class="light">جک</span> اسمیت-->
+                    <!--                                    </cite>-->
+                    <!--                                    <div class="metadata">-->
+                    <!--                                        26 فروردین 1392 در 12:30 بعد از ظهر  /  <a href="#">پاسخ</a>-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="comment-text">-->
+                    <!--                                        <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد</p>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        -->
+                    <hr/>
+                    {% endif %}
+                    <h3 class="push-down-25"><span class="light">نظر</span> بدهید</h3>
+
+                    <form action="{% url 'product-add-comment' product.id%}" class="form form-inline form-comments" id="commentform"
+                          method="post">
+                        {%if not user.is_authenticated%}
+                        <p class="push-down-20">
+                            {% csrf_token %}
+                            <input aria-required="true" id="author" name="author" required size="30" tabindex="1"
+                                   type="text" value="">
+                            <label for="author">نام<span class="red-clr bold">*</span></label>
+                        </p>
+                        {% endif %}
+                        <!--                            <p class="push-down-20">-->
+                        <!--                                <input type="email" aria-required="true" tabindex="2" size="30" value="" id="email" name="email" required>-->
+                        <!--                                <label for="email">ایمیل<span class="red-clr bold">*</span></label>-->
+                        <!--                            </p>-->
+                        <!--                            <p class="push-down-20">-->
+                        <!--                                <input type="text" tabindex="3" size="30" value="" id="url" name="url">-->
+                        <!--                                <label for="url">وبسایت</label>-->
+                        <!--                            </p>-->
+                        <!--    -->
+
+                        <p class="push-down-20">
+                            {% csrf_token %}
+                            <textarea class="input-block-level" cols="70" id="comment" name="comment" placeholder="نظرتان را در اینجا بنویسید ..."
+                                      required rows="7" tabindex="4"></textarea>
+                        </p>
+                        <p>
+                            {% csrf_token %}
+                            <button class="btn btn-primary bold" id="submit" tabindex="5" type="submit">ارسال نظر
+                            </button>
+                        </p>
+                    </form>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+    
+
+
+<script>
+    $(document).on('click', '#add-button', function (e) {
+        e.preventDefault();
+        console.log("im here")
+        $.ajax({
+            type: 'POST',
+            url: '{% url "basket_add" %}',
+            data: {
+                productid: $('#add-button').val(),
+                productqty: $('#select').val(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: 'post'
+            },
+            success: function (json) {
+               document.getElementById("basket-qty").innerHTML = json.qty
+
+            },
+            error: function (xhr, errmsg, err) {}
+        });
+    })
+
+</script>
+<!--<script src="{%static 'js/custom.js'%}"></script>-->
+{% endblock content %}

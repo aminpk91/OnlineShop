@@ -1,0 +1,614 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load product_cat_tree %}
+{% block content %}
+<script src="{% static 'js/custom.js' %}"> </script>
+
+    <!--  ==========  -->
+    <!--  = Slider Revolution =  -->
+    <!--  ==========  -->
+    <div class="fullwidthbanner-container">
+        <div class="fullwidthbanner">
+            <ul>
+                <li data-transition="premium-random" data-slotamount="3">
+                    <img src="{% static 'images/dummy/slides/1/slide.jpg' %}" alt="slider img" width="1400" height="377" />
+
+<!--                    &lt;!&ndash; baloons &ndash;&gt;-->
+<!--                    <div class="caption lft ltt"-->
+<!--                        data-x="570"-->
+<!--                        data-y="50"-->
+<!--                        data-speed="4000"-->
+<!--                        data-start="1000"-->
+<!--                        data-easing="easeOutElastic">-->
+<!--                        <img src="{% static 'images/dummy/slides/1/baloon1.png' %}" alt="baloon" width="135" height="186" />-->
+<!--                    </div>-->
+
+<!--                    <div class="caption lft ltt"-->
+<!--                        data-x="770"-->
+<!--                        data-y="60"-->
+<!--                        data-speed="4000"-->
+<!--                        data-start="1200"-->
+<!--                        data-easing="easeOutElastic">-->
+<!--                        <img src="{% static 'images/dummy/slides/1/baloon3.png' %}" alt="baloon" width="40" height="55" />-->
+<!--                    </div>-->
+
+<!--                    <div class="caption lft ltt"-->
+<!--                        data-x="870"-->
+<!--                        data-y="80"-->
+<!--                        data-speed="4000"-->
+<!--                        data-start="1500"-->
+<!--                        data-easing="easeOutElastic">-->
+<!--                        <img src="{% static 'images/dummy/slides/1/baloon2.png' %}" alt="baloon" width="60" height="83" />-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; texts &ndash;&gt;-->
+<!--                    <div class="caption lfl big_theme"-->
+<!--                        data-x="120"-->
+<!--                        data-y="120"-->
+<!--                        data-speed="1000"-->
+<!--                        data-start="500"-->
+<!--                        data-easing="easeInOutBack">-->
+<!--                        با وبمارکت، هیچ محدودیتی ندارید-->
+<!--                    </div>-->
+
+<!--                    <div class="caption lfl small_theme"-->
+<!--                        data-x="120"-->
+<!--                        data-y="190"-->
+<!--                        data-speed="1000"-->
+<!--                        data-start="700"-->
+<!--                        data-easing="easeInOutBack">-->
+<!--                        با امکانات قالب HTML وبمارکت آشنا شوید-->
+<!--                    </div>-->
+
+<!--                    <a href="features.html" class="caption lfl btn btn-primary btn_theme"-->
+<!--                        data-x="120"-->
+<!--                        data-y="260"-->
+<!--                        data-speed="1000"-->
+<!--                        data-start="900"-->
+<!--                        data-easing="easeInOutBack">-->
+<!--                        تمامی امکانات قالب-->
+<!--                    </a>-->
+                </li><!-- /slide -->
+
+                <li data-transition="premium-random" data-slotamount="3">
+                    <img src="{% static 'images/dummy/slides/2/slide.jpg' %}" alt="slider img" width="1400" height="377" />
+
+<!--                    &lt;!&ndash; woman &ndash;&gt;-->
+<!--                    <div class="caption lfb ltb"-->
+<!--                        data-x="800"-->
+<!--                        data-y="50"-->
+<!--                        data-speed="1000"-->
+<!--                        data-start="1000"-->
+<!--                        data-easing="easeInOutCubic">-->
+<!--                        <img src="{% static 'images/dummy/slides/2/woman.png' %}" alt="woman" width="361" height="374" />-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; plane &ndash;&gt;-->
+<!--                    <div class="caption lfl str"-->
+<!--                        data-x="400"-->
+<!--                        data-y="20"-->
+<!--                        data-speed="10000"-->
+<!--                        data-start="1000"-->
+<!--                        data-easing="linear">-->
+<!--                        <img src="{% static 'images/dummy/slides/2/plane.png' %}" alt="aircraft" width="117" height="28" />-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; texts &ndash;&gt;-->
+<!--                    <div class="caption lfl big_theme"-->
+<!--                        data-x="120"-->
+<!--                        data-y="120"-->
+<!--                        data-speed="1000"-->
+<!--                        data-start="500"-->
+<!--                        data-easing="easeInOutBack">-->
+<!--                        Slider Revolution-->
+<!--                    </div>-->
+
+<!--                    <div class="caption lfl small_theme"-->
+<!--                        data-x="120"-->
+<!--                        data-y="190"-->
+<!--                        data-speed="1000"-->
+<!--                        data-start="700"-->
+<!--                        data-easing="easeInOutBack">-->
+<!--                        این اسلایدر پریمیوم، به عنوان یک هدیه، به صورت رایگان به شما عرضه میشود!-->
+<!--                    </div>-->
+
+<!--                    <a href="features.html" class="caption lfl btn btn-primary btn_theme"-->
+<!--                        data-x="120"-->
+<!--                        data-y="260"-->
+<!--                        data-speed="1000"-->
+<!--                        data-start="900"-->
+<!--                        data-easing="easeInOutBack">-->
+<!--                        و خیلی چیز های دیگر-->
+<!--                    </a>-->
+                </li><!-- /slide -->
+
+<!--                <li data-transition="premium-random" data-slotamount="3">-->
+<!--                    <img src="{% static 'images/dummy/slides/3/slide.jpg' %}" alt="slider img" width="1400" height="377" />-->
+
+<!--                    &lt;!&ndash; phone &ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="caption sfr fadeout"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-x="950"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-y="77"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-speed="1000"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-start="2500"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-easing="easeInOutCubic">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="{% static 'images/dummy/slides/3/phone.png' %}" alt="phone in a hand" width="495" height="377" />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--                    &lt;!&ndash; texts &ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="caption lfl big_theme"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-x="120"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-y="120"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-speed="1000"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-start="500"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-easing="easeInOutBack">&ndash;&gt;-->
+<!--&lt;!&ndash;                        با طراحی مناسب برای موبایل&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <div class="caption lfl small_theme"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-x="120"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-y="190"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-speed="1000"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-start="700"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-easing="easeInOutBack">&ndash;&gt;-->
+<!--&lt;!&ndash;                        پنجره مرورگر خود را تغییر سایز دهید، خواهید دید که وبمارکت روی هر رزولوشنی به خوبی کار میکند.&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <a href="icons.html" class="caption lfl btn btn-primary btn_theme"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-x="120"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-y="260"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-speed="1000"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-start="900"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-easing="easeInOutBack">&ndash;&gt;-->
+<!--&lt;!&ndash;                        در ضمن آیکن های آن هم مناسب رتینا هستند ...&ndash;&gt;-->
+<!--&lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--                </li>&lt;!&ndash; /slide &ndash;&gt;-->
+
+<!--                <li data-transition="premium-random" data-slotamount="3">-->
+<!--                    <img src="{% static 'images/dummy/slides/4/slide.jpg' %}" alt="slider img" width="1400" height="377" />-->
+
+<!--                    &lt;!&ndash; faces &ndash;&gt;-->
+
+
+<!--                    &lt;!&ndash; texts &ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="caption lfl big_theme"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-x="120"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-y="140"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-speed="1000"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-start="500"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-easing="easeInOutBack">&ndash;&gt;-->
+<!--&lt;!&ndash;                        بیش از 1000 مشتری خوشنود&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <div class="caption lfl small_theme"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-x="120"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-y="210"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-speed="1000"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-start="700"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-easing="easeInOutBack">&ndash;&gt;-->
+<!--&lt;!&ndash;                        پروفایل ما را ببینید در <a href="http://themeforest.net/user/ProteusThemes" target="_blank">ThemeForest</a>!&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <a href="http://proteusthemes.ticksy.com/" class="caption lfl btn btn-primary btn_theme"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-x="120"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-y="280"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-speed="1000"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-start="900"&ndash;&gt;-->
+<!--&lt;!&ndash;                        data-easing="easeInOutBack">&ndash;&gt;-->
+<!--&lt;!&ndash;                        به خوبی شما را پشتیبانی میکنیم&ndash;&gt;-->
+<!--&lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--                </li>&lt;!&ndash; /slide &ndash;&gt;-->
+            </ul>
+            <div class="tp-bannertimer"></div>
+        </div>
+        <!--  ==========  -->
+        <!--  = Nav Arrows =  -->
+        <!--  ==========  -->
+        <div id="sliderRevLeft"><i class="icon-chevron-left"></i></div>
+        <div id="sliderRevRight"><i class="icon-chevron-right"></i></div>
+    </div> <!-- /slider revolution -->
+
+
+
+
+    <!--  ==========  -->
+    <!--  = Main container =  -->
+    <!--  ==========  -->
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="push-up over-slider blocks-spacer">
+                    
+                    <!--  ==========  -->
+                    <!--  = Three Banners =  -->
+                    <!--  ==========  -->
+                    <div class="row">
+                        <div class="span4">
+                            <a href="#" class="btn btn-block banner" style="background-image: linear-gradient(45deg, green ,white, green);">
+                                <span class="title" ><span class="light">فروش</span> تابستانی</span>
+                                <em>تا 60% تخفیف روی محصولات </em>
+                            </a>
+                        </div>
+                        <div class="span4">
+                            <a href="#" class="btn btn-block red banner" style="background-image: linear-gradient(45deg, red ,white, red);">
+                                <span class="title"><span class="light">ارسال</span> رایگان</span>
+                                <em>برای خرید های بیش از 500000 تومان</em>
+                            </a>
+                        </div>
+                        <div class="span4">
+                            <a href="#" class="btn btn-block banner" style="background-image: linear-gradient(45deg, orange ,white, orange);">
+                                <span class="title"><span class="light">محصولات</span> جدید</span>
+                                <em>از محصولات جدید دیدن کنید.</em>
+                            </a>
+                        </div>
+                    </div> <!-- /three banners -->
+                </div>
+            </div>
+        </div>
+        
+        <!--  ==========  -->
+        <!--  = Featured Items =  -->
+        <!--  ==========  -->
+        <div class="row featured-items blocks-spacer">
+            <!--div class="span12">
+                
+                <!--  ==========  -->
+                <!--  = Title =  -->
+                <!--  ==========  -->
+            	<!--div class="main-titles lined">
+            	    <h2 class="title"><span class="light">محصولات</span> ویژه</h2>
+            	    <div class="arrows">
+                        <a href="#" class="icon-chevron-right" id="featuredItemsRight"></a>
+                        <a href="#" class="icon-chevron-left" id="featuredItemsLeft"></a>
+                    </div>
+            	</div>
+            </div>
+            
+            <div class="span12">
+                <!--  ==========  -->
+                <!--  = Carousel =  -->
+                <!--  ==========  -->
+                <!--div class="carouFredSel" data-autoplay="false" data-nav="featuredItems">
+                    <div class="slide">
+                        <div class="row">
+                    	 
+                    	 
+                    	
+                    	 
+                	            	
+    	            	<!--  ==========  -->
+    					<!--  = Product =  -->
+    					<!--  ==========  -->
+    	            	<!--div class="span4">
+    	            	    <div class="product">
+    	            	        <div class="product-img featured">
+    	            	            <div class="picture">
+    	            	        	    <img src="images/dummy/featured-products/featured-1.png" alt="" width="518" height="358" />
+    	            	        		<div class="img-overlay">
+    	            	        		    <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
+    	            	        		    <a href="#" class="btn buy btn-danger">خرید</a>
+    	            	        		</div>
+    	            	            </div>
+    	            	        </div>
+    	            	        <div class="main-titles">
+    	            	            <h4 class="title">$115</h4>
+    	            	            <h5 class="no-margin">محصول ویژه 652</h5>
+    	            	        </div>
+    	            	        <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>
+    	            	        <p class="center-align stars">
+                    	            <span class="icon-star stars-clr"></span>
+                    	            <span class="icon-star stars-clr"></span>
+                    	            <span class="icon-star stars-clr"></span>
+                    	            <span class="icon-star stars-clr"></span>
+                    	            <span class="icon-star stars-clr"></span>
+                    	             
+                    	        </p>
+    	            	    </div>
+                	      </div> <!-- /product>
+    	            	 
+                    	 
+
+    	            	    	            	</div> 
+                	</div>
+                </div> <!-- /carousel >
+            </div>
+            
+        </div>
+    </div> <!-- /container -->
+    
+    <!--  ==========  -->
+    <!--  = New Products =  -->
+    <!--  ==========  -->
+    <div class=" blocks-spacer">
+        <div class="container">
+            
+            <!--  ==========  -->
+            <!--  = Title =  -->
+            <!--  ==========  -->
+            <div class="row">
+                <div class="span12">
+                    <div class="main-titles lined">
+                    	<h2 class="title"><span class="light">محصولات</span> جدید فروشگاه</h2>
+                    </div>
+                </div>
+            </div> <!-- /title -->
+            
+            <div class="row popup-products blocks-spacer">
+                  
+                 {% for new_product in products %}
+                <!--  ==========  -->
+                <!--  = Product =  -->
+                <!--  ==========  -->   
+            	<div class="span3">
+            	    <div class="product">
+            	        <div class="product-img">
+                            <div class="picture">
+                                   {% if new_product.img.all %}
+                                        {% for image in new_product.img.all %}
+                                          {% if image.default %}
+
+                                            <img width="540" height="420" src="{{image.image.url}}" alt=""  />
+                                            <div class="img-overlay">
+                                                <a href="{% url 'product-detail' new_product.slug%}" class="btn more btn-primary">توضیحات بیشتر</a>
+                                                {% if new_product.qty < 1 %}
+                                                    <button class="btn buy btn-danger" id="add-wait" value="{{new_product.id}}">موجود شد اطلاع بده</button>                                            </div>
+                                                {% else %}
+                                                    <button class="btn buy btn-danger" id="add-button" value="{{new_product.id}}">اضافه به سبد خرید</button>                                            </div>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                  {% else %}
+                                  <img src="{% static 'images/dummy/products/bosch.jpg' %}" alt="" width="540" height="420" />
+                                        <div class="img-overlay">
+                                            <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
+                                            <button class="btn buy btn-danger" id="add-button" value="{{new_product.id}}">اضافه به سبد خرید</button>                                        </div>
+                         {% endif %}
+                                  </div>
+                        </div>
+                        <div class="main-titles no-margin">
+
+                            {% if new_product.price > 0.0 %}
+                            {% if new_product.previous_price > 0 %}
+                            <h5 class="title"><span class="striked">{{new_product.previous_price}} تومان</span> <span class="red-clr">{{new_product.price}} تومان</span></h5>
+                            {% else %}
+                            <h5 class="title"> <span>{{new_product.price}} تومان</span></h5>
+                            {% endif %}
+                            {% else%}
+                            <h5 class="title"> <span>تماس بگیرید</span></h5>
+                            {% endif %}
+                            <h5 class="no-margin">{{new_product.name}}</h5>
+                        </div>
+                        <!--p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p-->
+                        <p class="center-align stars">
+
+                            {% with ''|center:new_product.rate as range %}
+                            {% for _ in range %}
+                                 <span class="icon-star stars-clr"></span>
+                            {% endfor %}
+                            {% endwith %}
+
+
+                             
+                        </p>
+            	    </div>
+            	</div> <!-- /product -->
+            	
+            	 {% endfor %}
+            	  
+                 
+
+            </div>
+        </div>
+    </div> <!-- /new products -->
+    
+    <!--  ==========  -->
+    <!--  = Most Popular products =  -->
+    <!--  ==========  -->
+    <div class="most-popular blocks-spacer">
+    	<div class="container">
+    	    
+    	    <!--  ==========  -->
+			<!--  = Title =  -->
+			<!--  ==========  -->
+    	    <div class="row">
+    	    	<div class="span12">
+    	    	    <div class="main-titles lined">
+    	                <h2 class="title"><span class="light">محبوب ترین </span>محصولات فروشگاه</h2>
+    	            </div>
+    	    	</div>
+    	    </div> <!-- /title -->
+    	    
+	    	<div class="row popup-products">
+                {% for fav_product in fav_products %}
+                <!--  ==========  -->
+                <!--  = Product =  -->
+                <!--  ==========  -->
+            	<div class="span3">
+            	    <div class="product">
+            	        <div class="product-img">
+                            <div class="picture">
+                                   {% if fav_product.img.all %}
+                                        {% for image in fav_product.img.all %}
+                                          {% if image.default %}
+
+                                            <img width="540" height="374" src="{{image.image.url}}" alt=""  />
+                                            <div class="img-overlay">
+                                                <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
+                                                {% if fav_product.qty < 1 %}
+                                                 <button class="btn buy btn-danger" id="add-wait" value="{{fav_product.id}}">موجود شد اطلاع بده</button>                                            </div>
+                                                {% else %}
+                                                <button class="btn buy btn-danger" id="add-button" value="{{fav_product.id}}">اضافه به سبد خرید</button>                                            </div>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                  {% else %}
+                                  <img src="{% static 'images/dummy/products/bosch.jpg' %}" alt="" width="540" height="374" />
+                                        <div class="img-overlay">
+                                            <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
+                                                {% if fav_product.qty < 1 %}
+                                                 <button class="btn buy btn-danger" id="add-wait" value="{{fav_product.id}}">موجود شد اطلاع بده</button>                                            </div>
+                                                {% else %}
+                                                <button class="btn buy btn-danger" id="add-button" value="{{fav_product.id}}">اضافه به سبد خرید</button>                                            </div>
+                                                {% endif %}                         {% endif %}
+                                  </div>
+                        </div>
+                        <div class="main-titles no-margin">
+                            {% if fav_product.price > 0.0 %}
+                            {% if fav_product.previous_price > 0 %}
+                            <h5 class="title"><span class="striked">{{fav_product.previous_price}} تومان</span> <span class="red-clr">{{new_product.price}} تومان</span></h5>
+                            {% else %}
+                            <h5 class="title"> <span>{{fav_product.price}} تومان</span></h5>
+                            {% endif %}
+                            {% else%}
+                            <h5 class="title"> <span>تماس بگیرید</span></h5>
+                            {% endif %}
+                            <h5 class="no-margin">{{fav_product.name}}</h5>
+                        </div>
+                        <!--p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p-->
+                        <p class="center-align stars">
+
+                            {% with ''|center:fav_product.rate as range %}
+                            {% for _ in range %}
+                                 <span class="icon-star stars-clr"></span>
+                            {% endfor %}
+                            {% endwith %}
+
+
+
+                        </p>
+            	    </div>
+            	</div> <!-- /product -->
+
+            	 {% endfor %}
+
+
+
+	    	            
+
+                    	    </div>
+    	</div>
+    </div> <!-- /most popular -->
+    
+    <!--  ==========  -->
+    <!--  = Lastest News =  -->
+    <!--  ==========  -->
+<!--    <div class="darker-stripe blocks-spacer more-space latest-news with-shadows">-->
+<!--    	<div class="container">-->
+<!--    	    -->
+    	    <!--  ==========  -->
+			<!--  = Title =  -->
+			<!--  ==========  -->
+<!--    		<div class="row">-->
+<!--    			<div class="span12">-->
+<!--    			    <div class="main-titles center-align">-->
+<!--    			        <h2 class="title">-->
+<!--    			            <span class="clickable icon-chevron-right" id="tweetsRight"></span> &nbsp;&nbsp;&nbsp;-->
+<!--    			            <span class="light">آخرین</span> خبر ها &nbsp;&nbsp;&nbsp;-->
+<!--    			            <span class="clickable icon-chevron-left" id="tweetsLeft"></span>-->
+<!--			            </h2>-->
+<!--    			    </div>-->
+<!--    			</div>-->
+<!--    		</div> &lt;!&ndash; /title &ndash;&gt;-->
+<!--    		-->
+    		<!--  ==========  -->
+			<!--  = News content =  -->
+			<!--  ==========  -->
+<!--    		<div class="row">-->
+<!--    		    <div class="span12">-->
+<!--    		        <div class="carouFredSel" data-nav="tweets" data-autoplay="false">-->
+<!--    		             -->
+<!--    		                -->
+<!--		                &lt;!&ndash;  ==========  &ndash;&gt;-->
+<!--						&lt;!&ndash;  = Slide =  &ndash;&gt;-->
+<!--						&lt;!&ndash;  ==========  &ndash;&gt; -->
+<!--                        <div class="slide">-->
+<!--                        	<div class="row">-->
+<!--                        		<div class="span6">-->
+<!--                        		    <div class="news-item">-->
+<!--                        		        <div class="published">12 بهمن 1392</div>-->
+<!--                        		        <h6><a href="#">عنوان خبر شما</a></h6>-->
+<!--                        		        <p>در این قسمت میتوانید خبر خود را بنویسید. این یک نوشته ی آزمایشی است که صرفا برای پر کردن این بخش به کار رفته و جنبه ی دیگری ندارد. شما میتوانید این ناحیه را با محتوای دلخواه خود پر کنید.</p>-->
+<!--                        		    </div>-->
+<!--                        		</div>-->
+<!--                        		<div class="span6">-->
+<!--                        		    <div class="news-item">-->
+<!--                        		        <div class="published">15 بهمن 1392</div>-->
+<!--                        		        <h6><a href="#">یک خبر جالب دیگر</a></h6>-->
+<!--                        		        <p>در این قسمت میتوانید خبر خود را بنویسید. این یک نوشته ی آزمایشی است که صرفا برای پر کردن این بخش به کار رفته و جنبه ی دیگری ندارد. شما میتوانید این ناحیه را با محتوای دلخواه خود پر کنید.</p>-->
+<!--                        		    </div>-->
+<!--                        		</div>-->
+<!--                        	</div>-->
+<!--                        </div> &lt;!&ndash; /slide &ndash;&gt;-->
+<!--                         -->
+<!--    		                -->
+<!--		                &lt;!&ndash;  ==========  &ndash;&gt;-->
+<!--						&lt;!&ndash;  = Slide =  &ndash;&gt;-->
+<!--						&lt;!&ndash;  ==========  &ndash;&gt; -->
+<!--                        <div class="slide">-->
+<!--                        	<div class="row">-->
+<!--                        		<div class="span6">-->
+<!--                        		    <div class="news-item">-->
+<!--                        		        <div class="published">12 بهمن 1392</div>-->
+<!--                        		        <h6><a href="#">عنوان خبر شما</a></h6>-->
+<!--                        		        <p>در این قسمت میتوانید خبر خود را بنویسید. این یک نوشته ی آزمایشی است که صرفا برای پر کردن این بخش به کار رفته و جنبه ی دیگری ندارد. شما میتوانید این ناحیه را با محتوای دلخواه خود پر کنید.</p>-->
+<!--                        		    </div>-->
+<!--                        		</div>-->
+<!--                        		<div class="span6">-->
+<!--                        		    <div class="news-item">-->
+<!--                        		        <div class="published">15 بهمن 1392</div>-->
+<!--                        		        <h6><a href="#">یک خبر جالب دیگر</a></h6>-->
+<!--                        		        <p>در این قسمت میتوانید خبر خود را بنویسید. این یک نوشته ی آزمایشی است که صرفا برای پر کردن این بخش به کار رفته و جنبه ی دیگری ندارد. شما میتوانید این ناحیه را با محتوای دلخواه خود پر کنید.</p>-->
+<!--                        		    </div>-->
+<!--                        		</div>-->
+<!--                        	</div>-->
+<!--                        </div> &lt;!&ndash; /slide &ndash;&gt;-->
+<!--                         -->
+<!--                    </div>-->
+<!--    		    </div>-->
+<!--    		</div> &lt;!&ndash; /news content &ndash;&gt;-->
+<!--    	</div>-->
+<!--    </div>-->
+            <!-- /latest news -->
+    <br/>
+<br/>
+    <!--  ==========  -->
+    <!--  = Brands Carousel =  -->
+    <!--  ==========  -->
+	<div class="container blocks-spacer-last">
+		
+		<!--  ==========  -->
+		<!--  = Title =  -->
+		<!--  ==========  -->
+		<div class="row">
+		    <div class="span12">
+		    	<div class="main-titles lined">
+	                <h2 class="title"><span class="light">برند های</span> ما</h2>
+                    <div class="arrows">
+                        <a href="#" class="icon-chevron-right" id="brandsRight"></a>
+                        <a href="#" class="icon-chevron-left" id="brandsLeft"></a>
+                    </div>
+	            </div>
+		    </div>
+		</div> <!-- /title -->
+		
+		<!--  ==========  -->
+		<!--  = Logos =  -->
+		<!--  ==========  -->
+		<div class="row">
+		    <div class="span12">
+		    	<div class="brands carouFredSel" data-nav="brands" data-autoplay="true">
+                    <img src="{% static 'images/dummy/brands/bosch.png'%}" alt="" width="203" height="104" />
+                    <img src="{% static 'images/dummy/brands/makita.jpg'%}" alt="" width="203" height="104" />
+                    <img src="{% static 'images/dummy/brands/karcher.jpg'%}" alt="" width="203" height="104" />
+                    <img src="{% static 'images/dummy/brands/annovi.jpg'%}" alt="" width="203" height="104" />
+                    <img src="{% static 'images/dummy/brands/AEG.png'%}" alt="" width="203" height="104" />
+                    <img src="{% static 'images/dummy/brands/dewalt.jpg'%}" alt="" width="203" height="104" />
+                </div>
+		    </div>
+		</div> <!-- /logos -->
+	</div> <!-- /brands carousel -->
+
+
+
+{% endblock content %}
+    

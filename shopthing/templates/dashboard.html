@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+
+<br>
+	<br>
+    		<table class="table table-items">
+							    <thead>
+							    	<tr>
+							    		<th colspan="1"> کد سفارش</th>
+							    		<th><div class="align-right">وضعیت</div></th>
+                                        <th><div class="align-right">اطلاعات بیشتر</div></th>
+
+
+							    	</tr>
+							    </thead>
+
+							    <tbody>
+								<div>
+							          {% for order in orders %}
+                                    <td class="desc">{{order.id}}</td>
+									<td class="desc">{{order.status}}</td>
+									<td class="desc"><a href="#orderitems" aria-controls="dtl" aria-expanded="false"  data-toggle="collapse" role="button">جزئیات</a></td>
+									<div class="collapse" id="orderitems" aria-controls="dtl">
+										<thead>
+											<tr>
+												<th colspan="1"> نام محصول</th>
+												<th><div class="align-right">تعداد</div></th>
+												<th><div class="align-right">قیمت</div></th>
+											</tr>
+										</thead>
+										{% for item in order.cart.all %}
+											<tr>
+												<td colspan="1">{{item.product.name}}</td>
+												<td><div class="align-right">{{item.qty}}</div></td>
+												<td><div class="align-right">{{item.product.price}}</div></td>
+											</tr>
+										{% endfor %}
+									</div>
+
+<!--									<tr ><td><div>Should be collapsed</div></td></tr>-->
+
+
+							         {% endfor %}
+
+								</div>
+							    </tbody>
+							</table>
+
+
+
+
+</div>
+
+    </div>
+{% endblock content %}

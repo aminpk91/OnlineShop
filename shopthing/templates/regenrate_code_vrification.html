@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <p align='center'>
+        <h3>این نام کاربری قبلا ثبت شده است</h3>
+        <br>
+        <h5>آیا کد فعالسازی را دریافت نکرده اید؟</h5>
+        <a href="{% url 'phone_register_again' user %}" type="submit" class="btn btn-primary">دریافت مجدد کد</a>
+
+</div>
+{% endblock content %}

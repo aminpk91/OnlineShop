@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <!--  ==========  -->
+    <!--  = Breadcrumbs =  -->
+    <!--  ==========  -->
+    <div class="darker-stripe">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="index.html">وبمارکت</a>
+                        </li>
+                        <li><span class="icon-chevron-right"></span></li>
+                        <li>
+                            <a href="shop.html">فروشگاه</a>
+                        </li>
+                        <li><span class="icon-chevron-right"></span></li>
+                        <li>
+                            <a href="shop.html">همه محصولات</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="push-up blocks-spacer">
+            <div class="row">
+                
+                <!--  ==========  -->
+                <!--  = Sidebar =  -->
+                <!--  ==========  -->
+                <aside class="span3 left-sidebar" id="tourStep1">
+                    <div class="sidebar-item sidebar-filters" id="sidebarFilters">
+                        
+                        <!--  ==========  -->
+                        <!--  = Sidebar Title =  -->
+                        <!--  ==========  -->
+                        <div class="underlined">
+                        	<h3><span class="light">بر اساس فیلتر</span> خرید کنید</h3>
+                        </div>
+                        
+                        <!--  ==========  -->
+                        <!--  = Categories =  -->
+                        <!--  ==========  -->
+                        <div class="accordion-group" id="tourStep2">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" href="#filterOne">دسته بندی ها <b class="caret"></b></a>
+                            </div>
+                            <div id="filterOne" class="accordion-body collapse in">
+                                <div class="accordion-inner">
+                                    {% for cat in cats %}
+                                    <a href="#" data-target=".filter--{{cat.name}}" class="selectable"><i class="box"></i>{{cat.name}}</a>
+                                    {% endfor %}
+ 
+                                </div>
+                            </div>
+                        </div> <!-- /categories -->
+                        
+<!--                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+<!--                        &lt;!&ndash;  = Prices slider =  &ndash;&gt;-->
+<!--                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+<!--                        <div class="accordion-group">-->
+<!--                            <div class="accordion-heading">-->
+<!--                                <a class="accordion-toggle" data-toggle="collapse" href="#filterPrices">قیمت <b class="caret"></b></a>-->
+<!--                            </div>-->
+<!--                            <div id="filterPrices" class="accordion-body in collapse">-->
+<!--                                <div class="accordion-inner with-slider">-->
+<!--                                    <div class="jqueryui-slider-container">-->
+<!--                                        <div id="pricesRange"></div>-->
+<!--                                    </div>-->
+<!--                                    <input type="text" data-initial="432" class="max-val pull-right" disabled />-->
+<!--                                    <input type="text" data-initial="99" class="min-val" disabled />-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div> &lt;!&ndash; /prices slider &ndash;&gt;-->
+                        
+<!--                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+<!--                        &lt;!&ndash;  = Size filter =  &ndash;&gt;-->
+<!--                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+<!--                        <div class="accordion-group" id="tourStep3">-->
+<!--                            <div class="accordion-heading">-->
+<!--                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterTwo">سایز <b class="caret"></b></a>-->
+<!--                            </div>-->
+<!--                            <div id="filterTwo" class="accordion-body collapse">-->
+<!--                                <div class="accordion-inner">-->
+<!--                                    <a href="#" data-target="xs" data-type="size" class="selectable detailed"><i class="box"></i> XS</a>-->
+<!--<a href="#" data-target="s" data-type="size" class="selectable detailed"><i class="box"></i> S</a>-->
+<!--<a href="#" data-target="m" data-type="size" class="selectable detailed"><i class="box"></i> M</a>-->
+<!--<a href="#" data-target="l" data-type="size" class="selectable detailed"><i class="box"></i> L</a>-->
+<!--<a href="#" data-target="xl" data-type="size" class="selectable detailed"><i class="box"></i> XL</a>-->
+<!--<a href="#" data-target="xxl" data-type="size" class="selectable detailed"><i class="box"></i> XXL</a>-->
+<!-- -->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div> &lt;!&ndash; /size filter &ndash;&gt;-->
+<!--                        -->
+                        <!--  ==========  -->
+                        <!--  = Color filter =  -->
+                        <!--  ==========  -->
+<!--                        <div class="accordion-group">-->
+<!--                            <div class="accordion-heading">-->
+<!--                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterThree">رنگ <b class="caret"></b></a>-->
+<!--                            </div>-->
+<!--                            <div id="filterThree" class="accordion-body collapse">-->
+<!--                                <div class="accordion-inner">-->
+<!--                                    <a href="#" data-target="red" data-type="color" class="selectable detailed"><i class="box"></i> قرمز</a>-->
+<!--<a href="#" data-target="green" data-type="color" class="selectable detailed"><i class="box"></i> سبز</a>-->
+<!--<a href="#" data-target="blue" data-type="color" class="selectable detailed"><i class="box"></i> آبی</a>-->
+<!--<a href="#" data-target="pink" data-type="color" class="selectable detailed"><i class="box"></i> صورتی</a>-->
+<!--<a href="#" data-target="purple" data-type="color" class="selectable detailed"><i class="box"></i> بنفش</a>-->
+<!--<a href="#" data-target="orange" data-type="color" class="selectable detailed"><i class="box"></i> نارنجی</a>-->
+<!-- -->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div> &lt;!&ndash; /color filter &ndash;&gt;-->
+<!--                        -->
+                        <!--  ==========  -->
+                        <!--  = Brand filter =  -->
+                        <!--  ==========  -->
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterFour">برند <b class="caret"></b></a>
+                            </div>
+                            <div id="filterFour" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    {% for brand in brands %}
+                                    <a href="#" data-target="{{brand.name}}" data-type="brand" class="selectable detailed"><i class="box"></i>{{brand.name}}</a>
+                                    {% endfor %}
+
+ 
+                                </div>
+                            </div>
+                        </div> <!-- /brand filter -->
+                        
+                        <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span> حذف همه فیلتر ها</a>
+                        
+                    </div>
+                </aside> <!-- /sidebar -->
+                
+                <!--  ==========  -->
+                <!--  = Main content =  -->
+                <!--  ==========  -->
+                <section class="span9">
+                    
+                    <!--  ==========  -->
+                    <!--  = Title =  -->
+                    <!--  ==========  -->
+                    <div class="underlined push-down-20">
+                        <div class="row">
+                            <div class="span5">
+                                <h3><span class="light">همه</span> محصولات</h3>
+                            </div>
+                            <div class="span4">
+                                <div class="form-inline sorting-by" id="tourStep4">
+                                    <label for="isotopeSorting" class="black-clr">چینش :</label>
+                                    <select id="isotopeSorting" class="span3">
+                                        <option value='{"sortBy":"price", "sortAscending":"true"}'>بر اساس قیمت (کم به زیاد) &uarr;</option>
+                                        <option value='{"sortBy":"price", "sortAscending":"false"}'>بر اساس قیمت (زیاد به کم) &darr;</option>
+                                        <option value='{"sortBy":"name", "sortAscending":"true"}'>بر اساس نام (صعودی) &uarr;</option>
+                                        <option value='{"sortBy":"name", "sortAscending":"false"}'>بر اساس نام (نزولی) &darr;</option>
+                                        <option value='{"sortBy":"popularity", "sortAscending":"true"}'>بر اساس محبوبیت (کم به زیاد) &uarr;</option>
+                                        <option value='{"sortBy":"popularity", "sortAscending":"false"}'>بر اساس محبوبیت (زیاد به کم) &darr;</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- /title -->
+                    
+                    <!--  ==========  -->
+                    <!--  = Products =  -->
+                    <!--  ==========  -->
+                    <div class="row popup-products">
+                        <div id="isotopeContainer" class="isotope-container">
+                    	    
+                    	    
+                    	   {% for product in products %}
+                	        <!--  ==========  -->
+                            <!--  = Single Product =  -->
+                            <!--  ==========  -->
+                                <div class="span3 filter--{{product.category.name}}" data-price="{{product.price}}" data-popularity="{{product.rate}}" data-size="xs|s|m|xl"  data-brand="{{product.brand}}">
+                                    <div class="product">
+                                            {% if product.qty < 1 %}
+                                            <div class="stamp red">تمام شد</div>
+                                            {% endif %}
+                                            <div class="product-img">
+                                                <div class="picture">
+                                                  {% if product.img.all %}
+                                                    {% for image in product.img.all %}
+                                                      {% if image.default %}
+
+                                                                <img width="540" height="374" src="{{image.image.url}}" alt="{{image.image.url}}">
+                                                                <div class="img-overlay">
+                                                                    <a class="btn more btn-primary" href="{%url 'product-detail' product.slug %} ">توضیحات بیشتر</a>
+                                                                    {% if product.qty < 1 %}
+                                                                        <button class="btn buy btn-danger" id="add-wait" value="{{new_product.id}}">موجود شد اطلاع بده</button>                                            </div>
+                                                                    {% else %}
+                                                                        <button class="btn buy btn-danger" id="add-button" value="{{new_product.id}}">اضافه به سبد خرید</button>                                            </div>
+                                                                    {% endif %}
+
+                                            </div>
+                                                      {% endif %}
+                                                    {% endfor %}
+                                                  {% else %}
+                                                                <img   width="540" height="374" src="{% static 'images/dummy/products/product-1.jpg' %}">
+                                                                <div class="img-overlay">
+                                                                    <a class="btn more btn-primary" href="{%url 'product-detail' product.slug %} ">توضیحات بیشتر</a>
+                                                                    <button class="btn buy btn-danger" id="add-button" value="{{product.id}}">اضافه به سبد خرید</button>
+                                                                </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        <div class="main-titles no-margin">
+                                            {% if product.price > 0.0 %}
+                                            {% if product.previous_price > 0 %}
+                                            <h5 class="title"><span class="striked">{{product.previous_price}} تومان</span> <span class="red-clr">{{product.price}} تومان</span></h5>
+                                            {% else %}
+                                            <h5 class="title"> <span>{{product.price}} تومان</span></h5>
+                                            {% endif %}
+                                            {% else%}
+                                            <h5 class="title"> <span>تماس بگیرید</span></h5>
+                                            {% endif %}
+                                            <h5 class="no-margin isotope--title">{{product.name}}</h5>
+                                        </div>
+                                        <p class="center-align stars">
+
+                                            {% with ''|center:product.rate as range %}
+                                            {% for _ in range %}
+                                                 <span class="icon-star stars-clr"></span>
+                                            {% endfor %}
+                                            {% endwith %}
+<!--                                            <span class="icon-star stars-clr"></span>-->
+<!--                                            <span class="icon-star"></span>-->
+<!--                                            <span class="icon-star"></span>-->
+<!--                                            <span class="icon-star"></span>-->
+
+                                        </p>
+                                    </div>
+
+                                </div> <!-- /single product -->
+                    	   {% endfor %}
+
+                    	    
+                    	</div>
+                	</div>
+                	<hr />
+                </section> <!-- /main content -->
+            </div>
+        </div>
+    </div> <!-- /container -->
+    
+     
+<!--  <script>-->
+<!--      $(document).on('click', '#add-button', function (e) {-->
+<!--        e.preventDefault();-->
+<!--        console.log("im here")-->
+<!--        $.ajax({-->
+<!--            type: 'POST',-->
+<!--            url: '{% url "basket_add" %}',-->
+<!--            data: {-->
+<!--                productid: $('#add-button').val(),-->
+<!--                productqty: 1,-->
+<!--                csrfmiddlewaretoken: "{{csrf_token}}",-->
+<!--                action: 'post'-->
+<!--            },-->
+<!--            success: function (json) {-->
+<!--               document.getElementById("basket-qty").innerHTML = json.qty-->
+
+<!--            },-->
+<!--            error: function (xhr, errmsg, err) {}-->
+<!--        });-->
+<!--    })-->
+
+<!--  </script>-->
+<script src="{% static 'js/custom.js' %}"> </script>
+{% endblock content %}

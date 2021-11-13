@@ -1,0 +1,32 @@
+ 
+ -------------- celery@c90ea3b115cb v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.4.0-39-generic-x86_64-with 2021-10-29 11:13:29
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         ToolsMarket:0x7effa4c38f40
+- ** ---------- .> transport:   redis://redis:6379/3
+- ** ---------- .> results:     redis://redis:6379/4
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . users.tasks.phone_verification
+  . users.tasks.say_hello
+
+/usr/local/lib/python3.8/site-packages/celery/platforms.py:834: SecurityWarning: You're running the worker with superuser privileges: this is
+absolutely not recommended!
+
+Please specify a different user using the --uid option.
+
+User information: uid=0 euid=0 gid=0 egid=0
+
+  warnings.warn(SecurityWarning(ROOT_DISCOURAGED.format(
+[2021-10-29 11:13:30,136: INFO/MainProcess] Connected to redis://redis:6379/3
+[2021-10-29 11:13:30,162: INFO/MainProcess] mingle: searching for neighbors
+[2021-10-29 11:13:31,213: INFO/MainProcess] mingle: all alone
+[2021-10-29 11:13:31,254: INFO/MainProcess] celery@c90ea3b115cb ready.

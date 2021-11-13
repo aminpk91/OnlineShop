@@ -1,0 +1,406 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!--  ==========  -->
+<!--  = Breadcrumbs =  -->
+<!--  ==========  -->
+<div class="darker-stripe">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="index.html">وبمارکت</a>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="shop.html">بلاگ</a>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="blog-single.html">{{article.title}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="push-up top-equal blocks-spacer">
+        <div class="row">
+
+            <!--  ==========  -->
+            <!--  = Main Title =  -->
+            <!--  ==========  -->
+
+            <div class="span12">
+                <div class="title-area">
+                    <h1 class="inline"><span class="light"></span>مجله ابزار</h1>
+                    <h2 class="inline tagline">هر آنچه که باید از دنیای ابزار بدانید</h2>
+                </div>
+            </div>
+
+            <!--  ==========  -->
+            <!--  = Main content =  -->
+            <!--  ==========  -->
+            <section class="span8 single single-post">
+
+                <!--  ==========  -->
+                <!--  = Post =  -->
+                <!--  ==========  -->
+                <article class="post format-video">
+                    <div class="post-inner">
+
+                        <div class="post-title">
+                            <h1><span class="light">{{article.title}}</span></h1>
+                            <div class="metadata">
+                                {{article.created}}
+                                <a href="http://localhost/themeforest/wp-theme/2008/09/layout-test/#comments">بدون
+                                    نظر</a> /
+                                Posted in: <a href="#" title="View all posts in aciform">Webmarket</a>
+                            </div>
+                            <!--  ==========  -->
+                        <!--  = Share buttons =  -->
+                        <!--  ==========  -->
+                        <div class="share-item">
+                            <div class="pull-right social-networks">
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style ">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_pinterest_pinit"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-517459541beb3977"></script>
+                                <!-- AddThis Button END -->
+                            </div>
+                            با دوستان خود به اشتراک بگذارید :
+                        </div>
+                            {% if article.image %}
+                                <img alt="featured image" height="746" src="{{article.image.url}}" width="1540">
+                            {% endif%}
+                        </div>
+
+                        <p>
+                            {{article.body}}{% lorem %}
+                        </p>
+                        {% for prag in article.paragraph.all %}
+                        <img alt="featured image" height="746" src="{{prag.image.url}}" width="1540">
+                        <h2><span class="light">{{prag.sub_title}}</span></h2>
+                        <p>
+                            {{prag.body}}{% lorem %}
+                        </p>
+                        {% endfor %}
+
+                    </div>
+                </article>
+
+                <hr/>
+
+                <!--  ==========  -->
+                <!--  = Comments =  -->
+                <!--  ==========  -->
+                {% if article.comment.all %}
+                <section class="comments-container" id="comments">
+                    <h3 class="push-down-25"><span class="light">{{article.comments.all.count}}</span> نظرات</h3>
+                    {% for comment in article.comment.all %}
+                    <!--  ==========  -->
+                    <!--  = Single Comment =  -->
+                    <!--  ==========  -->
+                    <div class="single-comment clearfix">
+                        <div class="avatar-container">
+                            <img alt="avatar" class="avatar" height="184"
+                                 src="{% static 'images//dummy/avatars/149071.png'%}" width="184"/>
+                        </div>
+                        <div class="comment-content">
+
+                            <div class="comment-inner">
+                                {% if comment.reply_to %}
+                                <p style="font-style: italic;">در پاسخ به
+                                    <cite class="author-name">
+                                        <span class="light" style="font-style: italic;"></span>
+                                        {{comment.reply_to.author}}
+                                    </cite>
+                                <div class="metadata">
+                                    {{comment.reply_to.created}}
+                                </div>
+                                <p style="font-style: italic;">{{comment.reply_to.body|slice:":35"}}</p>
+                                </p>
+                                <hr/>
+                                {% endif %}
+
+                                <cite class="author-name">
+                                    <span class="light"></span> {{comment.author}}
+                                </cite>
+                                <div class="metadata">
+                                    {{comment.created}} <a href="{%url 'add-comment' aid=article.id  %}">پاسخ</a>
+                                </div>
+                                <div class="comment-text">
+                                    <p>{{comment.body}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+
+                    <!--                                &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                &lt;!&ndash;  = Single Nested Comment - one level =  &ndash;&gt;-->
+                    <!--                                &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                <div class="single-comment nested clearfix">-->
+                    <!--                                    <div class="avatar-container">-->
+                    <!--                                        <img src="{% static 'images//dummy/avatars/149071.png'%}" alt="avatar" class="avatar" width="184" height="184" />-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="comment-content">-->
+                    <!--                                        <div class="comment-inner">-->
+                    <!--                                            <cite class="author-name">-->
+                    <!--                                                <span class="light">Nested</span> Comment One Level-->
+                    <!--                                            </cite>-->
+                    <!--                                            <div class="metadata">-->
+                    <!--                                                26 فروردین 1392 در 12:30 بعد از ظهر  /  <a href="#">پاسخ</a>-->
+                    <!--                                            </div>-->
+                    <!--                                            <div class="comment-text">-->
+                    <!--                                                <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد</p>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div>-->
+                    <!--                                    </div>-->
+                    <!--                                </div> &lt;!&ndash; /nested comment &ndash;&gt;-->
+                    <!--                                 -->
+                    <!--                                &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                &lt;!&ndash;  = Single Nested Comment - one level =  &ndash;&gt;-->
+                    <!--                                &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                <div class="single-comment nested clearfix">-->
+                    <!--                                    <div class="avatar-container">-->
+                    <!--                                        <img src="{% static 'images//dummy/avatars/149071.png'%}" alt="avatar" class="avatar" width="184" height="184" />-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="comment-content">-->
+                    <!--                                        <div class="comment-inner">-->
+                    <!--                                            <cite class="author-name">-->
+                    <!--                                                <span class="light">Nested</span> Comment One Level-->
+                    <!--                                            </cite>-->
+                    <!--                                            <div class="metadata">-->
+                    <!--                                                26 فروردین 1392 در 12:30 بعد از ظهر  /  <a href="#">پاسخ</a>-->
+                    <!--                                            </div>-->
+                    <!--                                            <div class="comment-text">-->
+                    <!--                                                <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد</p>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div>-->
+                    <!--                                    </div>-->
+                    <!--                                </div> &lt;!&ndash; /nested comment &ndash;&gt;-->
+                    <!--                                 -->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        -->
+                    <!--                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                        &lt;!&ndash;  = Single Comment =  &ndash;&gt;-->
+                    <!--                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                        <div class="single-comment clearfix">-->
+                    <!--                            <div class="avatar-container">-->
+                    <!--                                <img src="{% static 'images//dummy/avatars/149071.png'%}" alt="avatar" class="avatar" width="184" height="184" />-->
+                    <!--                            </div>-->
+                    <!--                            <div class="comment-content">-->
+                    <!--                                <div class="comment-inner">-->
+                    <!--                                    <cite class="author-name">-->
+                    <!--                                        <span class="light">جان</span> دیوید-->
+                    <!--                                    </cite>-->
+                    <!--                                    <div class="metadata">-->
+                    <!--                                        26 فروردین 1392 در 12:30 بعد از ظهر  /  <a href="#">پاسخ</a>-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="comment-text">-->
+                    <!--                                        <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد</p>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                                -->
+                    <!--                                -->
+                    <!--                                &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                &lt;!&ndash;  = Single Nested Comment - one level =  &ndash;&gt;-->
+                    <!--                                &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                <div class="single-comment nested clearfix">-->
+                    <!--                                    <div class="avatar-container">-->
+                    <!--                                        <img src="{% static 'images//dummy/avatars/149071.png'%}" alt="avatar" class="avatar" width="184" height="184" />-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="comment-content">-->
+                    <!--                                        <div class="comment-inner">-->
+                    <!--                                            <cite class="author-name">-->
+                    <!--                                                <span class="light">Nested</span> Comment One Level-->
+                    <!--                                            </cite>-->
+                    <!--                                            <div class="metadata">-->
+                    <!--                                                26 فروردین 1392 در 12:30 بعد از ظهر  /  <a href="#">پاسخ</a>-->
+                    <!--                                            </div>-->
+                    <!--                                            <div class="comment-text">-->
+                    <!--                                                <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد</p>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div>-->
+                    <!--                                        -->
+                    <!--                                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                        &lt;!&ndash;  = Single Nested Comment - two levels =  &ndash;&gt;-->
+                    <!--                                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                                        <div class="single-comment nested clearfix">-->
+                    <!--                                            <div class="avatar-container">-->
+                    <!--                                                <img src="{% static 'images//dummy/avatars/149071.png'%}" alt="avatar" class="avatar" width="184" height="184" />-->
+                    <!--                                            </div>-->
+                    <!--                                            <div class="comment-content">-->
+                    <!--                                                <div class="comment-inner">-->
+                    <!--                                                    <cite class="author-name">-->
+                    <!--                                                        <span class="light">Nested</span> Comment Two Levels-->
+                    <!--                                                    </cite>-->
+                    <!--                                                    <div class="metadata">-->
+                    <!--                                                        26 فروردین 1392 در 12:30 بعد از ظهر  /  <a href="#">پاسخ</a>-->
+                    <!--                                                    </div>-->
+                    <!--                                                    <div class="comment-text">-->
+                    <!--                                                        <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد</p>-->
+                    <!--                                                    </div>-->
+                    <!--                                                </div>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div> &lt;!&ndash; /nested comment 2 &ndash;&gt;-->
+                    <!--                                    </div>-->
+                    <!--                                </div> &lt;!&ndash; /nested comment 1 &ndash;&gt;-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        -->
+                    <!--                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                        &lt;!&ndash;  = Single Comment =  &ndash;&gt;-->
+                    <!--                        &lt;!&ndash;  ==========  &ndash;&gt;-->
+                    <!--                        <div class="single-comment clearfix">-->
+                    <!--                            <div class="avatar-container">-->
+                    <!--                                <img src="{% static 'images//dummy/avatars/149071.png'%}" alt="avatar" class="avatar" width="184" height="184" />-->
+                    <!--                            </div>-->
+                    <!--                            <div class="comment-content">-->
+                    <!--                                <div class="comment-inner">-->
+                    <!--                                    <cite class="author-name">-->
+                    <!--                                        <span class="light">جک</span> اسمیت-->
+                    <!--                                    </cite>-->
+                    <!--                                    <div class="metadata">-->
+                    <!--                                        26 فروردین 1392 در 12:30 بعد از ظهر  /  <a href="#">پاسخ</a>-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="comment-text">-->
+                    <!--                                        <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد</p>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        -->
+                    <hr/>
+                    {% endif %}
+                    <h3 class="push-down-25"><span class="light">نظر</span> بدهید</h3>
+
+                    <form action="{% url 'add-comment' article.id%}" class="form form-inline form-comments" id="commentform"
+                          method="post">
+                        {%if not user.is_authenticated%}
+                        <p class="push-down-20">
+                            {% csrf_token %}
+                            <input aria-required="true" id="author" name="author" required size="30" tabindex="1"
+                                   type="text" value="">
+                            <label for="author">نام<span class="red-clr bold">*</span></label>
+                        </p>
+                         {% endif %}
+                        <!--                            <p class="push-down-20">-->
+                        <!--                                <input type="email" aria-required="true" tabindex="2" size="30" value="" id="email" name="email" required>-->
+                        <!--                                <label for="email">ایمیل<span class="red-clr bold">*</span></label>-->
+                        <!--                            </p>-->
+                        <!--                            <p class="push-down-20">-->
+                        <!--                                <input type="text" tabindex="3" size="30" value="" id="url" name="url">-->
+                        <!--                                <label for="url">وبسایت</label>-->
+                        <!--                            </p>-->
+                        <!--    -->
+
+                        <p class="push-down-20">
+                            {% csrf_token %}
+                            <textarea class="input-block-level" cols="70" id="comment" name="comment" placeholder="نظرتان را در اینجا بنویسید ..."
+                                      required rows="7" tabindex="4"></textarea>
+                        </p>
+                        <p>
+                            {% csrf_token %}
+                            <button class="btn btn-primary bold" id="submit" tabindex="5" type="submit">ارسال نظر
+                            </button>
+                        </p>
+                    </form>
+
+                </section>
+
+            </section> <!-- /main content -->
+
+            <!--  ==========  -->
+            <!--  = Sidebar =  -->
+            <!--  ==========  -->
+            <aside class="span4 right-sidebar">
+
+                <!--  ==========  -->
+                <!--  = Search Widget =  -->
+                <!--  ==========  -->
+                <div class="sidebar-item widget_search">
+                    <!-- <div class="underlined">
+                        <h3><span class="light">Search</span></h3>
+                    </div> -->
+
+                    <form action="#" class="form" id="searchform" method="get" role="search">
+                        <input class="input-block-level" id="appendedInputButton" name="s" placeholder="جستجو در نوشته ها ..."
+                               type="text">
+                        <button type="submit">
+                            <i class="icon-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!--  ==========  -->
+                <!--  = Flickr Widget =  -->
+                <!--  ==========  -->
+                <!--                    <div class="sidebar-item widget_flickr">-->
+                <!--                        <div class="underlined">-->
+                <!--                            <h3><span class="light">ابزارک</span> فلیکر</h3>-->
+                <!--                        </div>-->
+                <!--                        -->
+                <!--                        <div class="flickr-badge clearfix">-->
+                <!--                            &lt;!&ndash; Start of Flickr Badge &ndash;&gt;-->
+                <!--                            <div id="flickr_badge_uber_wrapper">-->
+                <!--                                <div id="flickr_badge_wrapper">-->
+                <!--                                    <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=9&display=random&size=s&layout=x&source=all_tag&tag=surf&user=29003388%40N04"></script>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                            &lt;!&ndash; End of Flickr Badge &ndash;&gt;-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                    -->
+                <!--  ==========  -->
+                <!--  = Archive =  -->
+                <!--  ==========  -->
+                <div class="sidebar-item widget_archive">
+                    <div class="underlined">
+                        <h3><span class="light">آرشیو</span>نوشته های بلاگ</h3>
+                    </div>
+
+                    <ul>
+                        {% for tag in tags%}
+                        <li><a href="{% url 'blog'%}" title="">{{tag.name}}</a>&nbsp;</li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+
+
+                <!--  ==========  -->
+                <!--  = Twitter Widget =  -->
+                <!--  ==========  -->
+                <div class="sidebar-item widget_twitter">
+                    <div class="underlined">
+                        <h3><span class="light">Twitter</span> Feed</h3>
+                    </div>
+
+                    <a class="twitter-timeline" data-widget-id="361435057526800385"
+                       href="https://twitter.com/primozدیوید">Tweets by @primozدیوید</a>
+                    <script>
+                        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                    </script>
+
+                </div>
+
+
+            </aside> <!-- /sidebar -->
+
+        </div>
+    </div>
+</div> <!-- /container -->
+
+
+{% endblock content %}

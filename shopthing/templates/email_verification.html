@@ -1,0 +1,15 @@
+{% autoescape off %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<nav>
+    <div class="container">
+        <a class="navbar-brand" href=""><span>Game<strong>IN</strong></span></a></div>
+</nav>
+<div class="container" dir="rtl">
+    Hi Dear {{ user.username }},
+
+    Please click on the link to confirm your registration in GameIN,
+    http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+</div>
+{% endautoescape %}

@@ -1,0 +1,59 @@
+version: "3.7"
+
+services:
+  django_web:
+    build: .
+    command: >
+      ash -c "python manage.py migrate && gunicorn ToolsMarket.wsgi:application --bind 0.0.0.0:8044"
+    volumes:
+      - static:/app/static
+      - media:/app/media
+      - .:/app/
+    ports:
+      - 8010:8044
+#    env_file:
+#      - ./.env
+    depends_on:
+      - postgres_db
+  postgres_db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=fama2378
+      - POSTGRES_DB=toolbox
+#      - POSTGRES_PORT=5432
+  nginx:
+    build: ./nginx
+    volumes:
+      - static:/app/static
+      - media:/app/media
+      - ./nginx/config/:/etc/nginx/conf.d/
+    ports:
+      - 8044:80
+    depends_on:
+      - django_web
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis_val:/data
+  celery:
+    restart: always
+    build:
+      context: .
+#      dockerfile: dokckerfile-name-alternative
+#      args:
+#        name : ashkan
+    command: >
+      ash -c "touch celery.log &&  celery -A ToolsMarket worker -l info &> celery.log"
+    volumes:
+      - .:/app
+    depends_on:
+      - django_web
+      - redis
+volumes:
+  postgres_data:
+  static:
+  media:
+  redis_val:
